@@ -1,12 +1,24 @@
-import { StyleSheet, Text, View, Image, ScrollView, Pressable, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Pressable,Linking, TouchableHighlight } from 'react-native';
 import BottomNav from '../components/bottomNavBar'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon1 from 'react-native-vector-icons/Fontisto';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Bell from 'react-native-vector-icons/AntDesign'
+import axios from 'axios';
+import { useData } from '../apiHooks/api';
 
 
 export default function Report({ navigation }) {
+
+    const { baseURL } = useData()
+
+    const getReport = () => {
+        Linking.openURL(`${baseURL}/reports`).catch(() => {
+          console.error('Failed to open URL in browser');
+        });
+      };
+
+    
 
     return (
         <>
@@ -21,7 +33,7 @@ export default function Report({ navigation }) {
                                 </Text>
                             </View>
                             <View style={styles.menuIcon}>
-                                <Bell name="bells" size={30} />
+                                <Bell name="bells" size={30} onPress={() => { navigation.navigate('Notification') }} />
                             </View>
                         </View>
                         <View style={styles.reports}>
@@ -30,11 +42,11 @@ export default function Report({ navigation }) {
                                     <Icon1 name="file-1" size={25} color={"#fff"} />
                                 </View>
                                 <Text style={styles.reportsText}>
-                                    qwer dfghj.pdf
+                                    Sessional Test.pdf
                                 </Text>
                             </View>
                             <View>
-                                <Icon2 name="download-cloud" size={30} />
+                                <Icon2 name="download-cloud" size={30} onPress={() => { getReport() }} />
                             </View>
                         </View>
                         <View style={styles.reports}>
@@ -43,11 +55,11 @@ export default function Report({ navigation }) {
                                     <Icon1 name="file-1" size={25} color={"#fff"} />
                                 </View>
                                 <Text style={styles.reportsText}>
-                                    qwer dfghj.pdf
+                                    Final Result.pdf
                                 </Text>
                             </View>
                             <View>
-                                <Icon2 name="download-cloud" size={30} />
+                                <Icon2 name="download-cloud" size={30} onPress={() => { getReport() }}  />
                             </View>
                         </View>
                         <View style={styles.reports}>
@@ -56,11 +68,11 @@ export default function Report({ navigation }) {
                                     <Icon1 name="file-1" size={25} color={"#fff"} />
                                 </View>
                                 <Text style={styles.reportsText}>
-                                    qwer dfghj.pdf
+                                    Developer Resume.pdf
                                 </Text>
                             </View>
                             <View>
-                                <Icon2 name="download-cloud" size={30} />
+                                <Icon2 name="download-cloud" size={30} onPress={() => { getReport() }} />
                             </View>
                         </View>
                         <View style={styles.reports}>
@@ -69,11 +81,11 @@ export default function Report({ navigation }) {
                                     <Icon1 name="file-1" size={25} color={"#fff"} />
                                 </View>
                                 <Text style={styles.reportsText}>
-                                    qwer dfghj.pdf
+                                    Jaswant_Resume.pdf
                                 </Text>
                             </View>
                             <View>
-                                <Icon2 name="download-cloud" size={30} />
+                                <Icon2 name="download-cloud" size={30} onPress={() => { getReport() }} />
                             </View>
                         </View>
                     </ScrollView>
@@ -119,7 +131,7 @@ const styles = StyleSheet.create({
     },
     reportText: {
         color: '#262626',
-        fontFamily: 'Poppins',
+
         fontWeight: "400",
         fontSize: 16,
         fontStyle: 'normal',
@@ -127,7 +139,7 @@ const styles = StyleSheet.create({
     },
     reportsText: {
         color: '#262626',
-        fontFamily: 'Poppins',
+
         fontWeight: "400",
         fontSize: 14,
         fontStyle: 'normal',
@@ -141,7 +153,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         borderColor: '#9E77ED',
-        marginTop:25,
+        marginTop: 25,
 
     },
     reportName: {

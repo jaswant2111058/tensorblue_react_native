@@ -2,14 +2,17 @@ import { StyleSheet, Text, View, Image, ScrollView, Pressable, TouchableHighligh
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Entypo';
 import Bell from 'react-native-vector-icons/AntDesign'
-import Icon2 from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/Fontisto';
 import ProgressCircle from '../components/progressCircle';
 import BottomNav from '../components/bottomNavBar'
+import { useData } from '../apiHooks/api';
 
 export default function Home({ navigation }) {
 
+    const { user, isLoading} = useData()
+
     return (
-        <>
+        <> 
             <View style={styles.homeWrapper}>
                 <View style={styles.homeMain}>
                     <View style={styles.header}>
@@ -17,16 +20,16 @@ export default function Home({ navigation }) {
                             <Icon name="menu-outline" size={30} />
                         </View>
                         <View style={styles.menuIcon}>
-                            <Bell name="bells" size={30} />
+                            <Bell name="bells" size={30} onPress={() => { navigation.navigate('Notification') }} />
                         </View>
                     </View>
-                    <ScrollView>
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         <View>
                             <Text style={styles.welcome}>
                                 Welcome Back,
                             </Text>
                             <Text style={styles.userName}>
-                                Jassi
+                                {isLoading?"Loading Details...":user.name}
                             </Text>
                         </View>
                         <View>
@@ -40,7 +43,7 @@ export default function Home({ navigation }) {
                             <View style={styles.QuickLinkCard}>
                                 <View style={styles.QuickLinkReport}>
                                     <View style={styles.QuickLinkIcons} >
-                                        <Icon name="menu-outline" color={'#fff'} size={30} onPress={() => { navigation.navigate('Report') }} />
+                                        <Bell name="profile" color={'#fff'} size={30} onPress={() => { navigation.navigate('Report') }} />
                                     </View>
                                     <Text style={styles.QuickLinkText}>
                                         Report
@@ -48,7 +51,7 @@ export default function Home({ navigation }) {
                                 </View>
                                 <View style={styles.QuickLinkSyllabus}>
                                     <View style={styles.QuickLinkIcons}>
-                                        <Icon color={'#fff'} name="menu-outline" size={30} />
+                                        <Bell color={'#fff'} name="filetext1" size={30} />
                                     </View>
                                     <Text style={styles.QuickLinkText}>
                                         Syllabus
@@ -56,7 +59,7 @@ export default function Home({ navigation }) {
                                 </View>
                                 <View style={styles.QuickLinkUnitTest}>
                                     <View style={styles.QuickLinkIcons}>
-                                        <Icon color={'#fff'} name="menu-outline" size={30} />
+                                        <Icon2 color={'#fff'} name="test-tube" size={30} />
                                     </View>
                                     <Text style={styles.QuickLinkText}>
                                         Unit Test
@@ -64,7 +67,7 @@ export default function Home({ navigation }) {
                                 </View>
                                 <View style={styles.QuickLinkPayment}>
                                     <View style={styles.QuickLinkIcons}>
-                                        <Icon color={'#fff'} name="menu-outline" size={30} />
+                                        <Icon color={'#fff'} name="wallet-outline" size={30} />
                                     </View>
                                     <Text style={styles.QuickLinkText}>
                                         Payment
@@ -80,7 +83,7 @@ export default function Home({ navigation }) {
                             <View style={styles.EventsCardsWrapper}>
                                 <View style={styles.EventsIcon_Name}>
                                     <View style={styles.EventsIcon}>
-                                        <Icon name="menu-outline" size={30} />
+                                        <Bell name="filetext1" size={30} />
                                     </View>
                                     <View>
                                         <Text style={styles.EventsName}>
@@ -104,11 +107,11 @@ export default function Home({ navigation }) {
                             <View style={styles.EventsCardsWrapper}>
                                 <View style={styles.EventsIcon_Name}>
                                     <View style={styles.EventsIcon}>
-                                        <Icon name="menu-outline" size={30} />
+                                        <Icon name="trophy-outline" size={30} />
                                     </View>
                                     <View>
                                         <Text style={styles.EventsName}>
-                                            Science Fair Showcase
+                                            Math Olympiad
                                         </Text>
                                     </View>
                                 </View>
@@ -128,11 +131,11 @@ export default function Home({ navigation }) {
                             <View style={styles.EventsCardsWrapper}>
                                 <View style={styles.EventsIcon_Name}>
                                     <View style={styles.EventsIcon}>
-                                        <Icon name="menu-outline" size={30} />
+                                        <Bell name="calculator" size={30} />
                                     </View>
                                     <View>
                                         <Text style={styles.EventsName}>
-                                            Science Fair Showcase
+                                            Sports Day Extravaganza
                                         </Text>
                                     </View>
                                 </View>
@@ -152,11 +155,11 @@ export default function Home({ navigation }) {
                             <View style={styles.EventsCardsWrapper}>
                                 <View style={styles.EventsIcon_Name}>
                                     <View style={styles.EventsIcon}>
-                                        <Icon name="menu-outline" size={30} />
+                                        <Bell name="picture" size={30} />
                                     </View>
                                     <View>
                                         <Text style={styles.EventsName}>
-                                            Science Fair Showcase
+                                            Art Exhibition
                                         </Text>
                                     </View>
                                 </View>
@@ -215,7 +218,7 @@ const styles = StyleSheet.create({
     welcome: {
 
         color: '#262626',
-        fontFamily: 'Poppins',
+
         fontWeight: "400",
         fontSize: 12,
         fontStyle: 'normal',
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
     userName: {
 
         color: '#262626',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         marginBottom: 10,
         fontSize: 25,
@@ -238,7 +241,7 @@ const styles = StyleSheet.create({
     },
     QuickLink_Text: {
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         marginBottom: 10,
         fontSize: 16,
@@ -265,10 +268,10 @@ const styles = StyleSheet.create({
 
         backgroundColor: '#978CD0',
         borderRadius: 50,
-        width: 40,
-        height: 40,
-        paddingTop: 3,
-        paddingLeft: 5,
+        width: 50,
+        height: 50,
+        paddingTop: 9,
+        paddingLeft: 10,
         marginBottom: 10,
 
     },
@@ -279,14 +282,14 @@ const styles = StyleSheet.create({
     },
     EventsText: {
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         marginBottom: 10,
         fontSize: 16,
     },
     EventsDay: {
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         fontSize: 25,
         textAlign: 'center',
@@ -296,7 +299,7 @@ const styles = StyleSheet.create({
     EventsMonth: {
         marginTop: -5,
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "400",
         fontSize: 10,
         textAlign: 'center'
@@ -316,14 +319,12 @@ const styles = StyleSheet.create({
     },
     EventsIcon_Name: {
         flexDirection: 'row',
+        gap: 5,
     },
     EventsName: {
-
         color: '#08150E',
-        fontFamily: 'Poppins',
         fontWeight: "500",
         marginTop: 5,
         fontSize: 14,
-
     },
 });

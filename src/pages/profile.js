@@ -2,9 +2,12 @@ import { StyleSheet, Text, View, Image, ScrollView, Pressable, TouchableHighligh
 import BottomNav from '../components/bottomNavBar'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Bell from 'react-native-vector-icons/AntDesign'
+import { useData } from '../apiHooks/api';
 
 
 export default function Profile({ navigation }) {
+
+    const { user, isLoading } = useData()
 
     return (
         <>
@@ -19,12 +22,12 @@ export default function Profile({ navigation }) {
                                 </Text>
                             </View>
                             <View style={styles.menuIcon}>
-                                <Bell name="bells" size={30} />
+                                <Bell name="bells" size={30} onPress={() => { navigation.navigate('Notification') }} />
                             </View>
                         </View>
                         <View style={styles.user}>
                             <Text style={styles.userName}>
-                                Jassi
+                                {isLoading ? "Loading Details..." : user.name}
                             </Text>
                             <Image
                                 style={styles.userImage}
@@ -38,58 +41,57 @@ export default function Profile({ navigation }) {
                                     Student ID Number:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                    {isLoading ? "Loading Details..." : user.Student_ID_Number}
                                 </Text>
                             </View>
                             <View style={styles.userInfo}>
                                 <Text style={styles.userInfoText}>
-                                    Student ID Number:
+                                    Class/Grade:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                    {isLoading ? "Loading Details..." : user.Grade}
                                 </Text>
                             </View>
                             <View style={styles.userInfo}>
                                 <Text style={styles.userInfoText}>
-                                    Student ID Number:
+                                    Contact Number:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                    {isLoading ? "Loading Details..." : user.Contact_Number}
                                 </Text>
                             </View>
                             <View style={styles.userInfo}>
                                 <Text style={styles.userInfoText}>
-                                    Student ID Number:
+                                    Email Address:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                    {isLoading ? "Loading Details..." : user.Email_Address}
                                 </Text>
                             </View>
                             <View style={styles.userInfo}>
                                 <Text style={styles.userInfoText}>
-                                    Student ID Number:
+                                    Parent/Guardian:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                {isLoading?"Loading Details...":user.Guardian}
                                 </Text>
                             </View>
                             <View style={styles.userInfo}>
                                 <Text style={styles.userInfoText}>
-                                    Student ID Number:
+                                    Parent Contact:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                {isLoading?"Loading Details...":user.Parent_Contact}
                                 </Text>
                             </View>
                             <View style={styles.userInfo}>
                                 <Text style={styles.userInfoText}>
-                                    Student ID Number:
+                                    Address:
                                 </Text>
                                 <Text style={styles.userInfoText}>
-                                    S987654
+                                {isLoading?"Loading Details...":user.Address}
                                 </Text>
                             </View>
-
                         </View>
                     </ScrollView>
                     <BottomNav navigation={navigation} />
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
     },
     profileText: {
         color: '#262626',
-        fontFamily: 'Poppins',
+
         fontWeight: "400",
         fontSize: 16,
         fontStyle: 'normal',
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     userName: {
 
         color: '#262626',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         marginBottom: 10,
         fontSize: 25,
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 15,
         borderRadius: 20,
-        marginTop:20,
+        marginTop: 20,
 
     },
     userInfo: {
@@ -206,14 +208,14 @@ const styles = StyleSheet.create({
     },
     EventsText: {
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         marginBottom: 10,
         fontSize: 16,
     },
     EventsDay: {
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         fontSize: 25,
         textAlign: 'center',
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
     EventsMonth: {
         marginTop: -5,
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "400",
         fontSize: 10,
         textAlign: 'center'
@@ -247,7 +249,7 @@ const styles = StyleSheet.create({
     EventsName: {
 
         color: '#08150E',
-        fontFamily: 'Poppins',
+
         fontWeight: "500",
         marginTop: 5,
         fontSize: 14,

@@ -32,7 +32,7 @@ export default function ProgressCircle() {
                                 Attendence
                             </Text>
                             <Text style={styles.date}>
-                                Jan 2024 <Icon name="angle-down" color={'#fff'} size={30} />
+                                Jan 2024 <Icon name="angle-down" color={'#fff'} size={15} />
                             </Text>
                         </View>
                         <Svg height="200" width="110">
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     scoreCardWrapper: {
         width: '100%',
 
-
     },
     scoreCard: {
         width: '100%',
@@ -95,7 +94,6 @@ const styles = StyleSheet.create({
     },
     attendence: {
         color: '#fff',
-        fontFamily: 'Poppins',
         fontWeight: "400",
         marginBottom: 10,
         fontSize: 12,
@@ -104,7 +102,6 @@ const styles = StyleSheet.create({
     },
     date: {
         color: '#fff',
-        fontFamily: 'Poppins',
         fontWeight: "400",
         marginBottom: 10,
         fontSize: 20,

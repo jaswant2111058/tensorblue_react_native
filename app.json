@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tensorblue_task",
-    "slug": "tensorblue_task",
+    "name": "Tensorblue",
+    "slug": "Tessorblue",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1d53d978-247f-42d8-8bc9-c8dc96ccdd56"
+      }
     }
   }
 }
