@@ -39,8 +39,8 @@ export default function Home({ navigation }) {
                             </Text>
                             <View style={styles.QuickLinkCard}>
                                 <View style={styles.QuickLinkReport}>
-                                    <View style={styles.QuickLinkIcons}>
-                                        <Icon name="menu-outline" color={'#fff'} size={30} />
+                                    <View style={styles.QuickLinkIcons} >
+                                        <Icon name="menu-outline" color={'#fff'} size={30} onPress={() => { navigation.navigate('Report') }} />
                                     </View>
                                     <Text style={styles.QuickLinkText}>
                                         Report
