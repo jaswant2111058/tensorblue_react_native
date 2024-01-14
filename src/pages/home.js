@@ -175,9 +175,9 @@ export default function Home({ navigation }) {
                             </View>
                         </View>
                     </ScrollView>
-                    <BottomNav />
+                    <BottomNav navigation={navigation} />
                 </View>
-               
+
             </View>
 
         </>

@@ -14,10 +14,10 @@ export default function BottomNav({ navigation }) {
                     <TouchableHighlight onPress={() => { navigation.navigate('Home') }}>
                         <Icon name='home' size={30} />
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { navigation.navigate('OrderRecipt') }}>
+                    <TouchableHighlight>
                         <Icon name='calendar' size={30} />
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={() => { navigation.navigate('Login') }}>
+                    <TouchableHighlight onPress={() => { navigation.navigate('Profile') }}>
                         <Icon1 name='user' size={30} />
                     </TouchableHighlight>
                 </View>
@@ -28,7 +28,7 @@ export default function BottomNav({ navigation }) {
 
 const styles = StyleSheet.create({
     NavWrapper: {
-        marginBottom:10
+        marginBottom:10,
     },
     NavMain: {
 
