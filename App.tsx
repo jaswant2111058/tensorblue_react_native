@@ -1,11 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/pages/home';
 import Profile from './src/pages/profile'
 import Report from './src/pages/report'
 import Notification from './src/pages/notification'
-const Stack = createStackNavigator();
+export type RootStackPramList = {
+  Home: undefined;
+  Report :undefined;
+  Profile :undefined;
+  Notification :undefined;
+}
+const Stack = createNativeStackNavigator<RootStackPramList>()
 import { DataProvider } from './src/apiHooks/api';
 
 
